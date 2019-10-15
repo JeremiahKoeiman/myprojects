@@ -82,15 +82,28 @@
         });
     }
 
-    function animate() {
+    async function animate() {
+        let interval = 25;
         let delta = clock.getDelta();
 
-        portalParticles.forEach(p =>{
+        portalParticles.forEach( function (p, index) {
+            setTimeout( function () {
+                p.rotation.z += delta * 1.5;
+            }, index * interval);
+        });
+        smokeParticles.forEach( function (p, index) {
+            setTimeout( function () {
+                p.rotation.z += delta * 0.2;
+            }, index * interval);
+        });
+
+        /*portalParticles.forEach(p =>{
             p.rotation.z += delta * 1.5;
         });
         smokeParticles.forEach(p =>{
             p.rotation.z += delta * 0.2;
-        });
+        });*/
+
         if (Math.random() > 0.9){
             portalLight.power = 350 + Math.random() * 500;
         }
