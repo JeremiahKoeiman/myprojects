@@ -34,7 +34,7 @@
         document.body.appendChild(renderer.domElement);
 
         particleSetup();
-        animationLoop();
+        //animationLoop();
     }
 
     function particleSetup() {
@@ -117,10 +117,12 @@
         if (Math.random() > 0.9){
             portalLight.power = 350 + Math.random() * 500;
         }
+
+        renderer.render(scene, cam);
+        requestAnimationFrame(animate);
     }
 
-    function animationLoop(){
-
+    /*function animationLoop(){
         renderer.render(scene, cam);
 
         for (let object of portalParticles){
@@ -128,7 +130,7 @@
         }
 
         requestAnimationFrame(animate);
-    }
+    }*/
 
     initScene();
 
